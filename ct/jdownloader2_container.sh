@@ -72,7 +72,7 @@ function load_module() {
 TEMP_DIR=$(mktemp -d)
 pushd $TEMP_DIR >/dev/null
 
-wget -qL https://raw.githubusercontent.com/StevenSeifried/proxmox-scripts/main/setup_files/jdownloader2_setup.sh
+wget -qL https://raw.githubusercontent.com/EntenPaule/proxmox-scripts/main/setup_files/jdownloader2_setup.sh
 
 load_module overlay
 
@@ -130,7 +130,7 @@ DISK=${DISK_PREFIX:-vm}-${CTID}-disk-0${DISK_EXT-}
 ROOTFS=${STORAGE}:${DISK_REF-}${DISK}
 
 echo -e "${CHECKMARK} \e[1;92m Creating LXC Container... \e[0m"
-DISK_SIZE=32G
+DISK_SIZE=4G
 pvesm alloc $STORAGE $CTID $DISK $DISK_SIZE --format ${DISK_FORMAT:-raw} >/dev/null
 if [ "$STORAGE_TYPE" == "zfspool" ]; then
   warn "Some containers may not work properly due to ZFS not supporting 'fallocate'."
